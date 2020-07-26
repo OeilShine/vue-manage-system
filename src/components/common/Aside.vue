@@ -4,9 +4,10 @@
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
-    background-color="#8E8CD8"
+    background-color="#2E2657"
     text-color="#fff"
     active-text-color="#ffd04b"
+    :collapse="isCollage"
   >
     <el-menu-item :index="item.path" v-for="item in noChildren" :key="item.path" @click="clickMenu(item)">
       <i :class="'el-icon-' + item.icon"></i>
@@ -14,16 +15,28 @@
     </el-menu-item>
     <el-submenu :index="item.label" v-for="(item, index) in hasChildren" :key="index">
       <template slot="title">
-        <i class="el-icon-location"></i>
+        <i class="el-icon-s-help"></i>
         <span>{{ item.label }}</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item :index="subItem.path" v-for="(subItem, subIndex) in item.children" :key="subIndex" @click="clickMenu(subItem)">{{
-          subItem.label
-        }}</el-menu-item>
+        <el-menu-item :index="subItem.path" v-for="(subItem, subIndex) in item.children" :key="subIndex" @click="clickMenu(subItem)"
+          ><i :class="'el-icon-' + subItem.icon"></i><span>{{ subItem.label }}</span></el-menu-item
+        >
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
+
+  <!-- <el-submenu :index="subItem.path" v-for="subItem in asideMenu" :key="subItem.id" @click="clickMenu(subItem)">
+      <template slot="title">
+        <i :class="'el-icon-' + subItem.icon"></i>
+        <span>{{ subItem.label }}</span>
+      </template>
+      <el-menu-item :index="item.id" v-for="(item, index) in subItem.children" :key="index" @click="clickMenu(item)">
+        <i :class="'el-icon-' + item.icon"></i>
+        <span>{{ item.label }}</span>
+      </el-menu-item>
+    </el-submenu>
+  </el-menu> -->
 </template>
 
 <script>
@@ -37,7 +50,7 @@ export default {
           name: 'home',
           path: '/',
           label: '首页',
-          icon: 'home'
+          icon: 's-home'
         },
         {
           id: 2,
@@ -57,19 +70,20 @@ export default {
           id: 4,
           name: 'other',
           label: '其他',
+          path: '/other',
           icon: 'user',
           children: [
             {
               path: '/page1',
               name: 'page1',
               label: '演示页面1',
-              icon: 'setting'
+              icon: 'star-on'
             },
             {
               path: '/page2',
               name: 'page2',
               label: '演示页面2',
-              icon: 'setting'
+              icon: 'star-on'
             }
           ]
         }
@@ -82,6 +96,9 @@ export default {
     },
     hasChildren() {
       return this.asideMenu.filter(item => item.children)
+    },
+    isCollage() {
+      return this.$store.state.tab.isCollapse
     }
   },
   methods: {

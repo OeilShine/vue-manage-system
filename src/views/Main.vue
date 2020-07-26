@@ -1,10 +1,12 @@
 <template>
-  <el-container style="height: 100%">
-    <el-aside width="200px"><Aside /></el-aside>
+  <el-container>
+    <el-header><Header /></el-header>
     <el-container>
-      <el-header><Header /></el-header>
-      <Tab />
-      <el-main><router-view></router-view></el-main>
+      <el-aside width="auto"><Aside /></el-aside>
+      <el-main>
+        <Breadcrumb />
+        <router-view></router-view
+      ></el-main>
     </el-container>
   </el-container>
 </template>
@@ -12,20 +14,34 @@
 <script>
 import Header from '../components/common/Header'
 import Aside from '../components/common/Aside'
-import Tab from '../components/common/Tab'
+import Breadcrumb from '../components/content/Breadcrumb'
 
 export default {
   name: 'Main',
   components: {
     Header,
     Aside,
-    Tab
+    Breadcrumb
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.el-container {
+  height: 100%;
+}
 .el-header {
-  background: #333;
+  background: #170e45;
+  padding-left: 10px;
+}
+.el-aside {
+  height: 100%;
+}
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+}
+.el-main {
+  padding: 10px;
 }
 </style>

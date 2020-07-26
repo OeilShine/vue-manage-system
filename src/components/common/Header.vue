@@ -1,12 +1,10 @@
 <template>
   <header>
     <div class="l-content">
-      <el-button type="primary" icon="el-icon-menu" size="mini"></el-button
-      ><el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item :to="current.path" v-if="current">{{ current.label }}</el-breadcrumb-item>
-      </el-breadcrumb>
+      <el-button type="primary" icon="el-icon-menu" size="mini" @click="collapseMenu"></el-button>
+      <div class="startshine-title">星辉后台管理系统</div>
     </div>
+    <Tab />
     <div class="r-content">
       <el-dropdown trigger="click">
         <span class="el-dropdown-link"><img :src="userImg" class="userImg" alt=""/></span>
@@ -20,7 +18,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import Tab from '../common/Tab'
 export default {
   name: 'Header',
   data() {
@@ -28,10 +26,13 @@ export default {
       userImg: require('@/assets/images/userMan.jpg')
     }
   },
-  computed: {
-    ...mapState({
-      current: state => state.tab.currentMenu
-    })
+  components: {
+    Tab
+  },
+  methods: {
+    collapseMenu() {
+      this.$store.commit('collapseMenu')
+    }
   }
 }
 </script>
@@ -42,6 +43,12 @@ header {
   height: 100%;
   align-items: center;
   justify-content: space-between;
+}
+.startshine-title {
+  color: #ccc;
+  font-weight: 700;
+  font-size: 28px;
+  font-family: '华文行楷';
 }
 .l-content {
   display: flex;
@@ -56,20 +63,5 @@ header {
     height: 48px;
     border-radius: 50%;
   }
-}
-</style>
-
-<style lang="scss">
-.el-breadcrumb__inner a,
-.el-breadcrumb__inner.is-link,
-.el-breadcrumb__item:last-child .el-breadcrumb__inner,
-.el-breadcrumb__item:last-child .el-breadcrumb__inner a {
-  font-weight: 700;
-  color: #fff;
-}
-.el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
-.el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
-  font-weight: 700;
-  color: #409eff;
 }
 </style>

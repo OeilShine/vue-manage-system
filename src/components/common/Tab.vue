@@ -6,6 +6,7 @@
       size="small"
       :closable="tag.name !== 'home'"
       :disable-transitions="false"
+      :effect="$route.name === tag.name ? 'dark' : 'plain'"
       @close="handleClose(tag)"
       @click="changeMenu(tag)"
     >
@@ -55,9 +56,12 @@ export default {
   padding-bottom: 0;
 }
 .tabs {
-  padding: 20px;
+  min-width: 60%;
+  margin-top: 20px;
+  padding-bottom: 20px;
   .el-tag {
     margin-right: 15px;
+    cursor: pointer;
   }
 }
 </style>

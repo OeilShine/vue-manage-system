@@ -1,5 +1,6 @@
 export default {
   state: {
+    isCollapse: false,
     menu: [],
     currentMenu: null,
     tabsList: [
@@ -27,6 +28,9 @@ export default {
     closeTab(state, val) {
       let result = state.tabsList.findIndex(item => item.name === val.name)
       state.tabsList.splice(result, 1)
+    },
+    collapseMenu(state) {
+      state.isCollapse = !state.isCollapse
     }
   },
   actions: {}
