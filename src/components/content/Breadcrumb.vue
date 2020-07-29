@@ -24,7 +24,12 @@ export default {
 
 <style lang="scss">
 .el-breadcrumb {
-  padding-bottom: 10px;
+  width: 100%;
+  background: #e8e8e8;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 12px;
+  border-bottom: 1px #e0e0e0 solid;
 }
 .el-breadcrumb__inner a,
 .el-breadcrumb__inner.is-link,

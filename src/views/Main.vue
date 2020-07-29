@@ -42,6 +42,6 @@ export default {
   min-height: 400px;
 }
 .el-main {
-  padding: 10px;
+  padding: 0;
 }
 </style>

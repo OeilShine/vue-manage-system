@@ -45,6 +45,8 @@ header {
   justify-content: space-between;
 }
 .startshine-title {
+  width: 230px;
+  height: 30px;
   color: #ccc;
   font-weight: 700;
   font-size: 28px;
@@ -56,6 +58,9 @@ header {
   .el-button {
     margin-right: 20px;
   }
+}
+.m-content {
+  width: 50%;
 }
 .r-content {
   .userImg {
