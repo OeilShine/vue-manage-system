@@ -10,7 +10,7 @@
         <span class="el-dropdown-link"><img :src="userImg" class="userImg" alt=""/></span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item icon="el-icon-orange">个人中心</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-s-promotion">退出</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-s-promotion" @click.native="logOut">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -32,6 +32,11 @@ export default {
   methods: {
     collapseMenu() {
       this.$store.commit('collapseMenu')
+    },
+    logOut() {
+      this.$store.commit('clearToken')
+      this.$store.commit('clearMenu')
+      location.reload()
     }
   }
 }
@@ -47,7 +52,7 @@ header {
 .startshine-title {
   width: 230px;
   height: 30px;
-  color: #ccc;
+  color: #fff;
   font-weight: 700;
   font-size: 28px;
   font-family: '华文行楷';
@@ -57,6 +62,8 @@ header {
   align-items: center;
   .el-button {
     margin-right: 20px;
+    background: #2d306d;
+    border: none;
   }
 }
 .m-content {

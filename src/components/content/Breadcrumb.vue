@@ -25,10 +25,11 @@ export default {
 <style lang="scss">
 .el-breadcrumb {
   width: 100%;
-  background: #e8e8e8;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  height: 26px;
+  line-height: 26px;
+  margin-bottom: 20px;
   padding-left: 12px;
+  // background: #e8e8e8;
   border-bottom: 1px #e0e0e0 solid;
 }
 .el-breadcrumb__inner a,

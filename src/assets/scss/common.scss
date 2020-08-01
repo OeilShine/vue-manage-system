@@ -1,0 +1,17 @@
+.manage{
+  height: 100%;
+  padding-bottom: 20px;
+  overflow: hidden;
+  &-header {
+    height: 54px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .el-button {
+      padding: 10px 18px;
+    }
+    .search {
+      padding: 0 ;
+    }
+  }
+}
